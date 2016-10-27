@@ -23,10 +23,10 @@ noextract=()
 md5sums=('SKIP')
 validpgpkeys=()
 
-#pkgver() {
-#	cd "$pkgname"
-##	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-#}
+pkgver() {
+	cd "$pkgname"
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
 	cd "$pkgname"

@@ -2,7 +2,7 @@
 pkgname=qmic
 pkgver=1.0
 pkgrel=1
-pkgdesc="Qualcomm QRTR name service"
+pkgdesc="Qualcomm QMI IDL compiler (unofficial)"
 arch=('armv7h' 'aarch64')
 url="https://github.com/andersson/qmic"
 license=('BSD')
@@ -21,6 +21,11 @@ source=('git+https://github.com/andersson/qmic.git')
 noextract=()
 md5sums=('SKIP')
 validpgpkeys=()
+
+pkgver() {
+	cd "$pkgname"
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
 	cd "$pkgname"
