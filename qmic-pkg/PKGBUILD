@@ -1,0 +1,33 @@
+# Maintainer: Bjorn Andersson <bjorn.andersson@linaro.org>
+pkgname=qmic
+pkgver=1.0
+pkgrel=1
+pkgdesc="Qualcomm QRTR name service"
+arch=('armv7h' 'aarch64')
+url="https://github.com/andersson/qmic"
+license=('BSD')
+groups=()
+makedepends=('git')
+checkdepends=()
+optdepends=()
+provides=()
+conflicts=()
+replaces=()
+backup=()
+options=()
+install=
+changelog=
+source=('git+https://github.com/andersson/qmic.git')
+noextract=()
+md5sums=('SKIP')
+validpgpkeys=()
+
+build() {
+	cd "$pkgname"
+	make
+}
+
+package() {
+	cd "$pkgname"
+	make DESTDIR="$pkgdir/usr" install
+}

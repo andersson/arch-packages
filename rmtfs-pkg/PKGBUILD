@@ -1,0 +1,34 @@
+# Maintainer: Bjorn Andersson <bjorn.andersson@linaro.org>
+pkgname=rmtfs
+pkgver=1.0
+pkgrel=1
+pkgdesc="Qualcomm Remote Filesystem service"
+arch=('armv7h' 'aarch64')
+url="https://github.com/andersson/rmtfs"
+license=('BSD')
+groups=()
+makedepends=('git' 'qmic')
+checkdepends=()
+optdepends=()
+depends=('qrtr')
+provides=()
+conflicts=()
+replaces=()
+backup=()
+options=()
+install=
+changelog=
+source=('git+https://github.com/andersson/rmtfs.git')
+noextract=()
+md5sums=('SKIP')
+validpgpkeys=()
+
+build() {
+	cd "$pkgname"
+	make
+}
+
+package() {
+	cd "$pkgname"
+	make DESTDIR="$pkgdir/" install
+}

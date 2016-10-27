@@ -1,0 +1,50 @@
+# Maintainer: Bjorn Andersson <bjorn.andersson@linaro.org>
+pkgname=libusbg
+pkgver=v0.1.0.r122.gd800fae
+pkgrel=1
+pkgdesc="libusbg is a C library encapsulating the kernel USB gadget-configfs userspace API functionality"
+arch=('armv7h' 'aarch64')
+url="https://github.com/libusbg/libusbg"
+license=('GPL')
+groups=()
+depends=('libconfig')
+makedepends=('git' 'autoconf')
+checkdepends=()
+optdepends=()
+provides=()
+conflicts=()
+replaces=()
+backup=()
+options=()
+install=
+changelog=
+source=('git+https://github.com/libusbg/libusbg.git')
+noextract=()
+md5sums=('SKIP')
+validpgpkeys=()
+
+pkgver() {
+	cd "$pkgname"
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+	cd "$pkgname"
+	autoreconf -i
+}
+
+build() {
+	cd "$pkgname"
+	./configure --prefix=/usr
+	make
+}
+
+check() {
+	cd "$pkgname"
+	make -k check
+}
+
+package() {
+	cd "$pkgname"
+	make DESTDIR="$pkgdir/" install
+}
