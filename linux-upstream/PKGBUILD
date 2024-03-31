@@ -2,8 +2,8 @@
 #
 # Minor modifications from upstream linux package by Jan Alexander Steffens (heftig).
 
-_rcver=6.8
-_rcrel=7
+_rcver=6.9
+_rcrel=1
 
 pkgbase=linux-upstream
 pkgver=${_rcver}.rc${_rcrel}
@@ -39,7 +39,7 @@ validpgpkeys=(
   ABAF11C65A2970B130ABE3C479BE3E4300411886  # Linus Torvalds
   647F28654894E3BD457199BE38DBBDC86092693E  # Greg Kroah-Hartman
 )
-sha256sums=('7dff9585f59c09794344a7e29006b170b76b45bf9880cf011cf3e0a15c1f0768'
+sha256sums=('a0239424e10e45c43252d5decc6978a3fa58e0d4d631d0855db57fa209f53165'
             'SKIP')
 
 export KBUILD_BUILD_HOST=archlinux
