@@ -3,7 +3,7 @@
 # Minor modifications from upstream linux package by Jan Alexander Steffens (heftig).
 
 _rcver=6.9
-_rcrel=2
+_rcrel=5
 
 pkgbase=linux-upstream
 pkgver=${_rcver}.rc${_rcrel}
@@ -39,7 +39,7 @@ validpgpkeys=(
   ABAF11C65A2970B130ABE3C479BE3E4300411886  # Linus Torvalds
   647F28654894E3BD457199BE38DBBDC86092693E  # Greg Kroah-Hartman
 )
-sha256sums=('5ce1087e02d0ba7bfaf3cf09552e86dcb509e5d94d89dda0e20d397a14c4bf5a'
+sha256sums=('SKIP'
             'SKIP')
 
 export KBUILD_BUILD_HOST=archlinux
@@ -63,8 +63,8 @@ prepare() {
 
 build() {
   cd $_srcname
-  make -j4 all
-  make -j4 htmldocs
+  make -j32 all
+  make -j32 htmldocs
 }
 
 _package() {
@@ -224,8 +224,8 @@ _package-docs() {
 
 pkgname=(
   "$pkgbase"
-  "$pkgbase-headers"
-  "$pkgbase-docs"
+#  "$pkgbase-headers"
+#  "$pkgbase-docs"
 )
 for _p in "${pkgname[@]}"; do
   eval "package_$_p() {
